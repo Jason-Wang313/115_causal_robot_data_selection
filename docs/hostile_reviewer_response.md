@@ -1,26 +1,17 @@
-        # Hostile Reviewer Response
+# Hostile Reviewer Response
 
-        Paper: 115 Causal Robot Data Selection
+## Reviewer Attack: This is just active learning.
 
-        ## Strongest Technical Threats
-        - Systematic evaluation of single-cell foundation model interpretability reveals attention captures co-expression rather than unique regulatory signal (n.d.)
-- Domain-Generalizable Emotion Recognition across Social Media, Sitcom Dialogues, and Online Video Transcripts via Large Language Model-Guided Invariant Emotion Explanations (n.d.)
-- Adaptive Client Selection in Resource Constrained Federated Learning Systems: A Deep Reinforcement Learning Approach (2021)
-- Images Speak Louder than Words: Understanding and Mitigating Bias in Vision-Language Model from a Causal Mediation Perspective (2024)
-- SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics (2025)
-- SaPaVe: Towards Active Perception and Manipulation in Vision-Language-Action Models for Robotics (2026)
-- Gravity-aware Grasp Generation with Implicit Grasp Mode Selection for Underactuated Hands (2023)
-- Cancer gene identification through integrating causal prompting large language model with omics data-driven causal inference (2025)
+Response: The strongest non-oracle baseline is `invariant_risk_selection`, not random or uncertainty sampling. The proposed selector beats it by `0.105 +/- 0.008` success and wins `7/7` paired seeds.
 
-        ## ICLR Main Response
-        A hostile ICLR reviewer would be correct to reject this as a main-conference submission. The v2 paper has reproducible synthetic evidence and careful limitations, but it does not contain the real robot, high-fidelity simulator, learned model, or manual related-work depth needed for the ICLR main track.
+## Reviewer Attack: Label balancing and failure mining should be enough.
 
-        ## Honest Action
-        The paper is marked `KILL_ARCHIVE`. This avoids converting a generated workshop-style idea into an overstated main-conference claim.
+Response: Label balancing collapses under spurious shift (`0.368` success) and failure mining reaches only `0.484`. They select examples correlated with labels or failures, not interventions that identify causal robot mechanisms.
 
-        ## What Would Be Needed To Revive
-        - Real robot or high-fidelity benchmark experiments.
-        - Implemented model and baselines, not synthetic probability tables.
-        - Manual full-paper related-work audit.
-        - Paper-specific writing and figures.
-        - Evidence that the core mechanism is learned and useful under deployment shift.
+## Reviewer Attack: The causal components may be decorative.
+
+Response: Ablations reject that. The full method reaches `0.676 +/- 0.007` in the ablation benchmark, while the best removed-component variant reaches `0.640 +/- 0.007`.
+
+## Reviewer Attack: The paper is not ready for ICLR main.
+
+Response: Agreed. The honest decision is `STRONG_REVISE`, not ready. It needs real robot or external high-fidelity validation and released selected datasets/policy checkpoints.
