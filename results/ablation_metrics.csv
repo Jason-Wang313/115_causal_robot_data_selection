@@ -1,6 +1,8 @@
-ablation,combined_stress_mean_success,ci95_success,interpretation
-full_proposed_branch_mechanism,0.6698,0.0162,all components
-minus_branch_atlas,0.5595,0.0185,removes explicit unrealized futures
-minus_tail_risk_objective,0.5940,0.0144,uses mean predicted value only
-minus_diagnostic_probe,0.6157,0.0130,does not actively test ambiguous physical modes
-minus_failure_memory,0.6110,0.0180,does not reuse repaired beliefs
+ablation,mean_success_rate,ci95_success_rate,mean_causal_mechanism_recall,ci95_causal_mechanism_recall,mean_spurious_dependence_rate,ci95_spurious_dependence_rate,mean_tail_failure_rate,ci95_tail_failure_rate,mean_damage_rate,ci95_damage_rate,mean_selection_cost,ci95_selection_cost,mean_calibration_error,ci95_calibration_error,groups,episodes_per_group
+classifier_only_selection,0.565889,0.008752,0.534419,0.001745,0.267652,0.001386,0.117822,0.000959,0.075114,0.000392,0.199209,0.000438,0.075097,0.000420,245,84
+full_causal_selector,0.675705,0.007241,0.633818,0.001700,0.130763,0.001022,0.075967,0.000893,0.042716,0.000360,0.222513,0.000443,0.073093,0.000447,245,84
+minus_cost_constraint,0.639504,0.007458,0.590928,0.001679,0.161586,0.001193,0.086868,0.000836,0.052032,0.000314,0.272753,0.000399,0.073242,0.000470,245,84
+minus_intervention_score,0.599660,0.007620,0.555829,0.001749,0.222498,0.001354,0.104862,0.000921,0.063210,0.000408,0.216402,0.000446,0.074139,0.000425,245,84
+minus_mechanism_coverage,0.618076,0.007756,0.571808,0.001746,0.201804,0.001265,0.095812,0.000898,0.058629,0.000422,0.218099,0.000430,0.073760,0.000419,245,84
+minus_spurious_penalty,0.606948,0.008358,0.564865,0.001803,0.244867,0.001491,0.108003,0.000930,0.066368,0.000375,0.210692,0.000408,0.074704,0.000491,245,84
+minus_tail_failure_objective,0.631293,0.007455,0.584380,0.001814,0.173746,0.001222,0.114893,0.000853,0.067964,0.000355,0.214626,0.000426,0.073816,0.000428,245,84

@@ -1,0 +1,9 @@
+baseline,mean_success_diff,ci95_success_diff,paired_seed_wins,non_oracle,decisive
+diversity_coreset_selection,0.215889,0.009799,7,True,True
+failure_mining_selection,0.190622,0.010410,7,True,True
+influence_selection,0.127697,0.006831,7,True,True
+invariant_risk_selection,0.104713,0.007763,7,True,True
+label_balanced_selection,0.306025,0.006040,7,True,True
+oracle_interventional_selector,-0.101652,0.008733,0,False,False
+random_selection,0.350632,0.011073,7,True,True
+uncertainty_active_selection,0.158552,0.005601,7,True,True

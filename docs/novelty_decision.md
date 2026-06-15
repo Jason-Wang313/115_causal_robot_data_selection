@@ -1,7 +1,7 @@
 # Novelty Decision
 
-Chosen thesis: Causal Robot Data Selection turns the seed bet into a mechanism: Select training data that separates causal mechanisms rather than balances labels.
+Decision: STRONG_REVISE
 
-New central mechanism: Causal robot data selection keeps action-critical alternatives explicit until a physical observation collapses them.
+The v4 rebuild defines a defensible novelty boundary: robot data selection should target action-critical causal mechanisms rather than labels, uncertainty, diversity, or failures alone. The local evidence supports this boundary against strong data-selection baselines and ablations.
 
-Decision: proceed as a revise/workshop-strength ICLR-style draft with synthetic but runnable evidence.
+The claim remains incomplete without real robot or external high-fidelity evidence.

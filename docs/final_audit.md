@@ -1,12 +1,25 @@
 # Final Audit
 
-1. Chosen thesis: Causal Robot Data Selection explores `Select training data that separates causal mechanisms rather than balances labels.` for robot data selection.
-2. ICLR-main decision: KILL_ARCHIVE.
-3. Submission-hardening version: v3.
-4. Reason: synthetic-only, template-generated evidence cannot support ICLR main-conference robotics claims.
-5. Closest hostile prior work: see `docs/hostile_prior_work.md`, `docs/hostile_prior_work_100_cards.csv`, and `docs/hostile_reviewer_response.md`.
-6. Reproducibility: synthetic code runs, but no real robot or high-fidelity benchmark is reproduced.
-7. Claim-validity status: main-conference claims killed; archive memo retained.
-8. Exact Downloads PDF path: `C:/Users/wangz/Downloads/115.pdf`
-9. GitHub URL: https://github.com/Jason-Wang313/115_causal_robot_data_selection
-10. Confirmation: no visible Desktop copy was requested or made.
+Paper: 115 causal_robot_data_selection
+
+Submission-hardening version: v4
+
+Terminal decision: STRONG_REVISE
+
+## Evidence
+
+The archive scaffold was replaced with a causal robot data-selection benchmark. The benchmark evaluates 5 skill families, 7 causal/spurious regimes, 5 budgets/splits, 9 selectors, 7 seeds, and 84 rollout episodes per group. The proposed causal mechanism selector beats the strongest non-oracle baseline, `invariant_risk_selection`, under combined stress.
+
+Key results:
+- Success: `0.674 +/- 0.008` proposed vs `0.570 +/- 0.009` strongest baseline.
+- Paired difference: `0.105 +/- 0.008`; wins `7/7`.
+- Causal-recall delta: `+0.087`.
+- Spurious-dependence delta: `-0.117`.
+- Tail-failure delta: `-0.037`.
+- Damage delta: `-0.026`.
+- Selection-cost delta: `-0.026`.
+- Best ablation gap: `0.036`.
+
+## Remaining Risk
+
+The result is local benchmark evidence. It lacks real robot experiments, external high-fidelity simulator transfer, released selected datasets, trained policies, and hardware videos. The correct terminal action is strong revise, not ICLR-main-ready submission.

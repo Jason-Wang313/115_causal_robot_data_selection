@@ -1,0 +1,4 @@
+case,expected_behavior,observed_failure_mode,lesson
+perfect_label_balance_spurious_color,ignore color mechanism shortcut,label-balanced selector overfits spurious color,balanced labels are not causal balance
+rare_contact_under_budget,select rare interventional contacts,diversity selector misses rare mechanism,geometric diversity can miss causal coverage
+failure_mining_without_counterfactuals,separate cause from consequence,failure mining selects redundant crashes,hard examples are not necessarily mechanism-identifying
