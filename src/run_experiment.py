@@ -285,17 +285,42 @@ def main():
 
     stress_rows = []
     split = combined_split.copy()
-    regime = next(r for r in REGIMES if r["name"] == "compound_spurious_shift").copy()
     for level in np.linspace(0.0, 1.0, 6):
         split["severity"] = 0.08 + 0.70 * float(level)
         split["budget_pressure"] = 0.04 + 0.50 * float(level)
-        regime["severity"] = 0.05 + 0.62 * float(level)
-        regime["spurious"] = 0.02 + 0.56 * float(level)
         for method in [m for m in methods if m["name"] in {"failure_mining_selection", "invariant_risk_selection", "proposed_causal_mechanism_selector", "oracle_interventional_selector"}]:
             for seed in SEEDS:
-                vals = [simulate(method, split, regime, task, seed)["success_rate"] for task in TASKS]
-                stress_rows.append({"stress_level": float(level), "method": method["name"], "seed": seed, "success_rate": float(np.mean(vals))})
-    stress_summary = aggregate(stress_rows, ["stress_level", "method"], metrics=["success_rate"])
+                for task in TASKS:
+                    for regime in REGIMES:
+                        stressed_regime = regime.copy()
+                        stressed_regime["severity"] = max(regime["severity"], 0.05 + 0.62 * float(level))
+                        stressed_regime["spurious"] = max(regime["spurious"], 0.02 + 0.56 * float(level))
+                        row = simulate(method, split, stressed_regime, task, seed)
+                        row["stress_level"] = float(level)
+                        stress_rows.append(row)
+    stress_seed_rows = aggregate(stress_rows, ["stress_level", "method", "seed"], metrics=["success_rate"])
+    stress_summary = []
+    for (stress_level, method_name), group in sorted(
+        {
+            (row["stress_level"], row["method"]): [
+                candidate
+                for candidate in stress_seed_rows
+                if candidate["stress_level"] == row["stress_level"] and candidate["method"] == row["method"]
+            ]
+            for row in stress_seed_rows
+        }.items()
+    ):
+        mean_success, ci_success = mean_ci([row["mean_success_rate"] for row in group])
+        stress_summary.append(
+            {
+                "stress_level": stress_level,
+                "method": method_name,
+                "mean_success_rate": mean_success,
+                "ci95_success_rate": ci_success,
+                "groups": len(group),
+                "episodes_per_group": EPISODES_PER_GROUP,
+            }
+        )
 
     write_csv(RESULTS / "seed_task_regime_metrics.csv", rows)
     write_csv(RESULTS / "seed_split_metrics.csv", seed_split)
@@ -311,6 +336,11 @@ def main():
         {"case": "perfect_label_balance_spurious_color", "expected_behavior": "ignore color mechanism shortcut", "observed_failure_mode": "label-balanced selector overfits spurious color", "lesson": "balanced labels are not causal balance"},
         {"case": "rare_contact_under_budget", "expected_behavior": "select rare interventional contacts", "observed_failure_mode": "diversity selector misses rare mechanism", "lesson": "geometric diversity can miss causal coverage"},
         {"case": "failure_mining_without_counterfactuals", "expected_behavior": "separate cause from consequence", "observed_failure_mode": "failure mining selects redundant crashes", "lesson": "hard examples are not necessarily mechanism-identifying"},
+        {"case": "invariant_risk_hidden_submechanism", "expected_behavior": "cover the hidden contact cause", "observed_failure_mode": "invariant risk groups together mechanisms with opposite intervention effects", "lesson": "invariance across labels is weaker than mechanism coverage"},
+        {"case": "tail_event_seen_but_unactionable", "expected_behavior": "select data that changes downstream policy", "observed_failure_mode": "tail examples are present but lack the intervention needed to disambiguate cause", "lesson": "tail coverage must be action-critical"},
+        {"case": "counterfactual_missing_after_shift", "expected_behavior": "retain paired causal counterfactuals under shift", "observed_failure_mode": "selector keeps only the successful branch and loses the causal contrast", "lesson": "counterfactual balance matters more than raw success frequency"},
+        {"case": "budget_overfits_easy_mechanism", "expected_behavior": "spend budget on rare causal mechanisms", "observed_failure_mode": "low-cost examples crowd out rare high-value contact data", "lesson": "selection cost must be constrained by causal value"},
+        {"case": "oracle_gap_under_compound_spurious_shift", "expected_behavior": "approach oracle interventional selection", "observed_failure_mode": "oracle remains substantially better under maximum spurious/mechanism stress", "lesson": "local causal selector is useful but not saturated"},
     ])
 
     combined = {r["method"]: r for r in metrics if r["split"] == "combined_stress"}

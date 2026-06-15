@@ -4,9 +4,9 @@ Paper: 115 causal_robot_data_selection
 
 Existing v3 decision: KILL_ARCHIVE
 
-v4 gate verdict: STRONG_REVISE
+v4.1 gate verdict: STRONG_REVISE
 
-Evidence digest: causal-data-selection-local-v4
+Evidence digest: causal-data-selection-local-v4.1
 
 ## Passed Local Gates
 
@@ -18,6 +18,9 @@ Evidence digest: causal-data-selection-local-v4
 - Selection-cost delta: `-0.026 <= 0`.
 - Paired-seed wins: `7/7 >= 5/7`.
 - Ablation margin: `0.036 >= 0.020`.
+- Expanded stress coverage: `5,880` task/regime/seed rows.
+- Failure-case coverage: `8` rows.
+- Numeric integrity: no NaN or infinite values.
 
 ## Remaining Main-Conference Blockers
 

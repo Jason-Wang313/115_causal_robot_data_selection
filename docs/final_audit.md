@@ -2,7 +2,7 @@
 
 Paper: 115 causal_robot_data_selection
 
-Submission-hardening version: v4
+Submission-hardening version: v4.1
 
 Terminal decision: STRONG_REVISE
 
@@ -19,6 +19,13 @@ Key results:
 - Damage delta: `-0.026`.
 - Selection-cost delta: `-0.026`.
 - Best ablation gap: `0.036`.
+- Stress sweep coverage: `5,880` task/regime/seed rows and `24` aggregate rows.
+- Failure cases: `8` documented causal-data-selection boundaries.
+- Numeric integrity: no NaN or infinite values found across result CSVs.
+- Canonical PDF: `C:/Users/wangz/Downloads/115.pdf`.
+- PDF SHA256: `D8953A338C245EC65F6103ED57468C873DF2AAB5A9F696870EA0E41142624E93`.
+- PDF size: `394835` bytes.
+- Desktop PDF copy: absent.
 
 ## Remaining Risk
 

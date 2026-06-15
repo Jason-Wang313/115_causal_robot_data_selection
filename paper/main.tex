@@ -6,6 +6,8 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{microtype}
+\raggedbottom
 
 \title{Causal Robot Data Selection}
 \author{Anonymous Authors}
@@ -14,7 +16,7 @@
 \maketitle
 
 \begin{abstract}
-Robot data selection often optimizes what is easy to count: label balance, uncertainty, diversity, or failure frequency. These criteria can select data that is statistically useful but causally redundant, especially when observed features are spuriously correlated with the physical mechanism that controls downstream success. We study causal robot data selection: choosing training examples and interventions that separate action-critical mechanisms. A local benchmark spans 5 robot skill families, 7 causal/spurious regimes, 5 budgets/splits, 9 selectors, 7 paired seeds, and 84 rollout episodes per group. Under combined stress, the proposed causal mechanism selector reaches $0.674 \pm 0.008$ downstream success versus $0.570 \pm 0.009$ for the strongest non-oracle baseline, invariant-risk selection. The paired gain is $0.105 \pm 0.008$ with wins on 7/7 seeds. The selector also improves causal mechanism recall, reduces spurious dependence, lowers tail failures, damage, and selection cost, and survives ablations. This is strong local evidence for a submission rebuild, but not final ICLR-main readiness without real robot or external high-fidelity validation.
+Robot data selection often optimizes what is easy to count: label balance, uncertainty, diversity, or failure frequency. These criteria can select data that is statistically useful but causally redundant, especially when observed features are spuriously correlated with the physical mechanism that controls downstream success. We study causal robot data selection: choosing training examples and interventions that separate action-critical mechanisms. A v4.1 local benchmark spans 5 robot skill families, 7 causal/spurious regimes, 5 budgets/splits, 9 selectors, 7 paired seeds, 84 rollout episodes per group, 5,880 task/regime/seed stress rows, and 8 documented failure cases. Under combined stress, the proposed causal mechanism selector reaches $0.674 \pm 0.008$ downstream success versus $0.570 \pm 0.009$ for the strongest non-oracle baseline, invariant-risk selection. The paired gain is $0.105 \pm 0.008$ with wins on 7/7 seeds. The selector also improves causal mechanism recall, reduces spurious dependence, lowers tail failures, damage, and selection cost, and survives ablations. This is strong local evidence for a submission rebuild, but not final ICLR-main readiness without real robot or external high-fidelity validation.
 \end{abstract}
 
 \section{Motivation}
@@ -41,6 +43,8 @@ where $\widehat{I}_{\mathrm{do}}$ estimates intervention-identifying value, $\wi
 The benchmark contains contact grasping, peg search, deformable pulling, mobile placing, and force-limited twisting policies. Shift regimes include IID mechanisms, color-mechanism confounding, material shift, operator bias shift, rare contact mechanisms, intervention gaps, and compound spurious shift. Selection splits range from clean budgets to combined stress.
 
 Baselines include random selection, label balancing, diversity core-set selection, failure mining, uncertainty active selection, influence selection, invariant-risk selection, the proposed causal mechanism selector, and an oracle interventional selector.
+
+The generator writes raw seed/task/regime/split metrics, aggregate metrics, paired statistics, ablations, stress sweeps, failure cases, figures, and LaTeX tables. The v4.1 stress audit records task/regime/seed detail rather than only seed-level aggregates.
 
 \section{Results}
 
@@ -83,7 +87,7 @@ Table~\ref{tab:ablation} shows that each component matters. The full selector re
 \end{table}
 
 \paragraph{Stress sweep.}
-Figure~\ref{fig:stress} increases spurious-correlation strength. The causal selector degrades more gracefully than failure mining and invariant-risk selection, but still trails the oracle interventional selector.
+Figure~\ref{fig:stress} increases spurious-correlation strength over 5,880 task/regime/seed rows. The causal selector degrades more gracefully than failure mining and invariant-risk selection, but still trails the oracle interventional selector. At maximum stress, the proposed selector reaches $0.623 \pm 0.010$ success versus $0.478 \pm 0.004$ for invariant-risk selection and $0.749 \pm 0.003$ for the oracle.
 
 \begin{figure}[t]
 \centering
@@ -91,6 +95,10 @@ Figure~\ref{fig:stress} increases spurious-correlation strength. The causal sele
 \caption{Stress sweep over spurious-correlation strength.}
 \label{fig:stress}
 \end{figure}
+
+\section{Failure Cases}
+
+The failure-case audit records eight boundaries: label balance overfitting a spurious color shortcut, rare contacts missed under a budget, failure mining without counterfactuals, hidden submechanisms inside invariant-risk groups, tail events that are present but not action-informative, missing counterfactual branches after shift, budget pressure overfitting easy mechanisms, and remaining oracle headroom under compound spurious shift. These cases require real interventional robot data, downstream policy validation, and released selected datasets before this can be treated as submission-ready.
 
 \section{Related Work Boundary}
 
@@ -100,7 +108,10 @@ Active learning, client selection, causal mediation, and invariant learning all 
 
 The evidence is local and generated by the released benchmark. It is stronger than the archived scaffold but still lacks real robot experiments, external high-fidelity simulator transfer, selected dataset release, trained policy checkpoints, and hardware videos. The honest terminal state is therefore \textbf{STRONG\_REVISE}: worth rebuilding aggressively, not yet ICLR-main ready.
 
+\begingroup
+\raggedright
 \bibliographystyle{iclr2026_conference}
 \bibliography{references}
+\endgroup
 
 \end{document}
