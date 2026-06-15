@@ -2,3 +2,8 @@ case,expected_behavior,observed_failure_mode,lesson
 perfect_label_balance_spurious_color,ignore color mechanism shortcut,label-balanced selector overfits spurious color,balanced labels are not causal balance
 rare_contact_under_budget,select rare interventional contacts,diversity selector misses rare mechanism,geometric diversity can miss causal coverage
 failure_mining_without_counterfactuals,separate cause from consequence,failure mining selects redundant crashes,hard examples are not necessarily mechanism-identifying
+invariant_risk_hidden_submechanism,cover the hidden contact cause,invariant risk groups together mechanisms with opposite intervention effects,invariance across labels is weaker than mechanism coverage
+tail_event_seen_but_unactionable,select data that changes downstream policy,tail examples are present but lack the intervention needed to disambiguate cause,tail coverage must be action-critical
+counterfactual_missing_after_shift,retain paired causal counterfactuals under shift,selector keeps only the successful branch and loses the causal contrast,counterfactual balance matters more than raw success frequency
+budget_overfits_easy_mechanism,spend budget on rare causal mechanisms,low-cost examples crowd out rare high-value contact data,selection cost must be constrained by causal value
+oracle_gap_under_compound_spurious_shift,approach oracle interventional selection,oracle remains substantially better under maximum spurious/mechanism stress,local causal selector is useful but not saturated
