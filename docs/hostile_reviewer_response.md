@@ -1,17 +1,21 @@
 # Hostile Reviewer Response
 
-## Reviewer Attack: This is just active learning.
+## "This is just active learning."
 
-Response: The strongest non-oracle baseline is `invariant_risk_selection`, not random or uncertainty sampling. The proposed selector beats it by `0.105 +/- 0.008` success and wins `7/7` paired seeds.
+Active learning, core-set selection, uncertainty selection, and influence selection are included as baselines. v5 is evaluated on action-critical mechanism value, downstream utility, tail failure, damage, cost, regret, and fixed-risk behavior.
 
-## Reviewer Attack: Label balancing and failure mining should be enough.
+## "The result only beats weak baselines."
 
-Response: Label balancing collapses under spurious shift (`0.368` success) and failure mining reaches only `0.484`. They select examples correlated with labels or failures, not interventions that identify causal robot mechanisms.
+The strongest non-oracle baseline is the retained `proposed_causal_mechanism_selector_v4`, not a weak selector. v5 beats it by `0.08841` hard success and `0.18155` hard utility.
 
-## Reviewer Attack: The causal components may be decorative.
+## "The risk audit is decorative."
 
-Response: Ablations reject that. The full method reaches `0.676 +/- 0.007` in the ablation benchmark, while the best removed-component variant reaches `0.640 +/- 0.007`.
+The strict fixed-risk budget accepts only `0.55813` of v5 cases and has zero breach, so it is not a rubber stamp. The utility margin remains `0.20267`.
 
-## Reviewer Attack: The paper is not ready for ICLR main.
+## "This is not real robotics evidence."
 
-Response: Agreed. The honest decision is `STRONG_REVISE`, not ready. The v4.1 evidence has 5,880 detailed stress rows and 8 failure cases, but it still needs real robot or external high-fidelity validation and released selected datasets/policy checkpoints.
+Correct. The paper explicitly fails the scope gate and is marked `STRONG_REVISE`, not ICLR-main ready.
+
+## "The related work is still incomplete."
+
+Correct. The bibliography now anchors the key active learning, invariant learning, causal confusion, offline RL, and robot data-scale areas, but manual full-paper synthesis remains a blocking scope item.

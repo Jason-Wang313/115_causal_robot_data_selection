@@ -1,0 +1,16 @@
+\begin{tabular}{lrrrr}
+\toprule
+ablation & success & utility & recall & spurious \\
+\midrule
+full\_interventional\_mechanism\_value\_selector\_v5 & 0.695 & 0.638 & 0.738 & 0.127 \\
+minus\_cost\_constraint & 0.674 & 0.586 & 0.727 & 0.140 \\
+minus\_calibration\_guard & 0.664 & 0.580 & 0.727 & 0.145 \\
+minus\_mechanism\_coverage & 0.653 & 0.563 & 0.688 & 0.147 \\
+minus\_tail\_failure\_value & 0.667 & 0.558 & 0.723 & 0.142 \\
+minus\_interventional\_contrast & 0.645 & 0.545 & 0.680 & 0.152 \\
+minus\_counterfactual\_pairs & 0.640 & 0.535 & 0.701 & 0.161 \\
+minus\_spurious\_penalty & 0.617 & 0.501 & 0.720 & 0.199 \\
+classifier\_only\_selector & 0.563 & 0.397 & 0.649 & 0.212 \\
+failure\_only\_selector & 0.544 & 0.345 & 0.639 & 0.222 \\
+\bottomrule
+\end{tabular}

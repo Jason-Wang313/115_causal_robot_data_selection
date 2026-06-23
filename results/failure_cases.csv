@@ -1,9 +1,25 @@
-case,expected_behavior,observed_failure_mode,lesson
-perfect_label_balance_spurious_color,ignore color mechanism shortcut,label-balanced selector overfits spurious color,balanced labels are not causal balance
-rare_contact_under_budget,select rare interventional contacts,diversity selector misses rare mechanism,geometric diversity can miss causal coverage
-failure_mining_without_counterfactuals,separate cause from consequence,failure mining selects redundant crashes,hard examples are not necessarily mechanism-identifying
-invariant_risk_hidden_submechanism,cover the hidden contact cause,invariant risk groups together mechanisms with opposite intervention effects,invariance across labels is weaker than mechanism coverage
-tail_event_seen_but_unactionable,select data that changes downstream policy,tail examples are present but lack the intervention needed to disambiguate cause,tail coverage must be action-critical
-counterfactual_missing_after_shift,retain paired causal counterfactuals under shift,selector keeps only the successful branch and loses the causal contrast,counterfactual balance matters more than raw success frequency
-budget_overfits_easy_mechanism,spend budget on rare causal mechanisms,low-cost examples crowd out rare high-value contact data,selection cost must be constrained by causal value
-oracle_gap_under_compound_spurious_shift,approach oracle interventional selection,oracle remains substantially better under maximum spurious/mechanism stress,local causal selector is useful but not saturated
+case,attacked_component,observed_failure_mode,required_fix
+label_balance_keeps_color_shortcut,label-balanced selection,color predicts mechanism in train but not in deployment,add interventional contrast pairs
+diversity_misses_rare_contact,diversity core-set,geometric diversity omits rare contact mechanisms,cover action-critical mechanisms explicitly
+failure_mining_repeats_same_crash,failure mining,crashes are numerous but causally redundant,"select counterfactual causes, not only failures"
+uncertainty_picks_ambiguous_views,uncertainty active learning,view ambiguity is high while intervention value is low,score downstream intervention value
+influence_overweights_easy_labels,influence functions,label-influential points need not change robot action success,measure policy utility after selection
+irm_groups_opposite_mechanisms,invariant risk,two mechanisms share invariant labels but opposite action effects,split by action-conditioned mechanism
+domain_adversarial_hides_tail,domain-adversarial selection,domain confusion removes a rare safety feature,protect tail mechanisms
+counterfactual_pairs_without_budget,counterfactual pair selection,good pairs are too expensive under tiny budget,include cost-constrained mechanism value
+tail_reweighting_overselects_damage,tail risk reweighting,tail examples include damaging interventions without alternatives,separate risk from useful intervention
+conformal_guard_abstains_too_often,conformal shift guard,safety filter preserves low breach but loses coverage,report coverage and utility together
+offline_value_chases_dense_reward,offline RL value selection,dense reward proxy misses causal recovery data,score action-critical mechanism recall
+foundation_embedding_keeps_semantic_proxy,foundation embedding filter,semantic closeness is not causal closeness,penalize spurious proxy dependence
+v4_lacks_counterfactual_suppression,v4 mechanism selector,old selector covers mechanisms but keeps confounded examples,add contrast and spurious penalty
+v5_oracle_gap_under_compound_shift,v5 selector,oracle remains better under hidden compound shift,needs real sensing or richer annotations
+tiny_budget_collapses_recall,all non-oracle selectors,budget is too small for rare mechanism coverage,report budget curve honestly
+operator_bias_after_shift,label and embedding selectors,operator style changes after deployment,audit operator-correlated features
+material_shift_without_intervention,passive selectors,material changes but no intervention pair exists,collect missing causal pair
+heldout_mechanism_false_confidence,uncertainty selector,predictive confidence remains high on wrong mechanism,calibrate mechanism risk
+damage_cost_tradeoff,tail selectors,lower tail failure can increase damage if selected data is forceful,jointly score utility
+calibration_under_hidden_confound,conformal and IRM selectors,nominal calibration hides confound-specific error,condition calibration on mechanism
+selected_dataset_not_released,submission artifact,readers cannot audit selected indices,release dataset/selection manifest
+no_trained_policy_checkpoint,submission artifact,downstream policy cannot be reproduced,release checkpoint hashes
+no_robot_rollout_video,scope evidence,local evidence has no hardware behavior,collect robot or accepted high-fidelity videos
+manual_related_work_gap,paper evidence,hostile-pool cards are not full manual synthesis,read and cite closest papers directly

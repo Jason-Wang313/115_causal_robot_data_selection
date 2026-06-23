@@ -1,11 +1,19 @@
 # Submission Readiness Decision
 
-Decision: STRONG_REVISE
+Version: `v5_expanded`
 
-ICLR main-conference readiness: NO.
+Decision: `STRONG_REVISE`
 
-Reason: The v4.1 rebuild adds a paper-specific causal robot data-selection benchmark with strong local evidence. The proposed selector beats `invariant_risk_selection` by `0.105 +/- 0.008` combined-stress success, wins `7/7` paired seeds, improves causal recall, lowers spurious dependence, tail failure, damage, and selection cost, survives ablations, expands stress coverage to `5,880` task/regime/seed rows, documents `8` failure cases, and has no numeric-integrity issues.
+ICLR-main ready: `no`
 
-Honest terminal action: keep and revise aggressively. Do not submit as final ICLR main paper until external validation is added.
+## Rationale
 
-Revival-to-ready condition: add real robot or accepted high-fidelity simulator experiments, release selected datasets/trained policies, compare to external data-curation baselines, and deepen related work through manual full-paper reading.
+The expanded local audit is strong enough to keep the paper alive. The v5 selector beats the retained v4 causal mechanism selector on hard success, hard utility, causal recall, spurious dependence, tail failure, damage, cost, regret, paired hard seeds, ablations, stress endpoint, and fixed-risk utility.
+
+The paper is still not submission-ready for ICLR main because the evidence is local/synthetic and lacks external robot validation artifacts.
+
+## Final PDF
+
+- `C:/Users/wangz/Downloads/115.pdf`
+- SHA256 `718DE79DFE5AE2991958D6C2C43EE6CD3273C5BE34EFC4331C1E721E2AB3B4C4`
+- Pages: 25

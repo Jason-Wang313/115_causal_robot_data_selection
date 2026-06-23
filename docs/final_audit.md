@@ -1,32 +1,33 @@
 # Final Audit
 
-Paper: 115 causal_robot_data_selection
+Paper: `115_causal_robot_data_selection`
 
-Submission-hardening version: v4.1
+Version: `v5_expanded`
 
-Terminal decision: STRONG_REVISE
+Date: 2026-06-23
 
-## Evidence
+Terminal decision: `STRONG_REVISE`
 
-The archive scaffold was replaced with a causal robot data-selection benchmark. The benchmark evaluates 5 skill families, 7 causal/spurious regimes, 5 budgets/splits, 9 selectors, 7 seeds, and 84 rollout episodes per group. The proposed causal mechanism selector beats the strongest non-oracle baseline, `invariant_risk_selection`, under combined stress.
+ICLR-main ready: `no`
 
-Key results:
-- Success: `0.674 +/- 0.008` proposed vs `0.570 +/- 0.009` strongest baseline.
-- Paired difference: `0.105 +/- 0.008`; wins `7/7`.
-- Causal-recall delta: `+0.087`.
-- Spurious-dependence delta: `-0.117`.
-- Tail-failure delta: `-0.037`.
-- Damage delta: `-0.026`.
-- Selection-cost delta: `-0.026`.
-- Best ablation gap: `0.036`.
-- Stress sweep coverage: `5,880` task/regime/seed rows and `24` aggregate rows.
-- Failure cases: `8` documented causal-data-selection boundaries.
-- Numeric integrity: no NaN or infinite values found across result CSVs.
-- Canonical PDF: `C:/Users/wangz/Downloads/115.pdf`.
-- PDF SHA256: `D8953A338C245EC65F6103ED57468C873DF2AAB5A9F696870EA0E41142624E93`.
-- PDF size: `394835` bytes.
-- Desktop PDF copy: absent.
+## Passed
 
-## Remaining Risk
+- Plan-first hostile-review protocol written and frozen.
+- CPU-only/RAM-light experiment runner compiled and executed.
+- All expected CSV row counts passed.
+- All frozen local empirical gates passed.
+- Bright boxed citation settings present in `paper/main.tex`.
+- LaTeX/BibTeX compiled to a 25-page PDF.
+- Validator passed.
+- Visual PDF QA sampled pages 1, 4, 9, 17, and 25.
+- Canonical numbered PDF exists in Downloads only.
+- No numbered PDF exists on the visible Desktop, factory root, or child repo root.
 
-The result is local benchmark evidence. It lacks real robot experiments, external high-fidelity simulator transfer, released selected datasets, trained policies, and hardware videos. The correct terminal action is strong revise, not ICLR-main-ready submission.
+## Final Artifact
+
+- `C:/Users/wangz/Downloads/115.pdf`
+- SHA256 `718DE79DFE5AE2991958D6C2C43EE6CD3273C5BE34EFC4331C1E721E2AB3B4C4`
+
+## Failed Scope Gate
+
+No real robot or accepted high-fidelity validation artifacts exist. The correct state is `STRONG_REVISE`, not ICLR-main ready.

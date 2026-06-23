@@ -1,0 +1,22 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+method & success & utility & recall & spurious & tail & cost \\
+\midrule
+oracle\_interventional\_selector & 0.804 & 0.847 & 0.841 & 0.066 & 0.052 & 0.144 \\
+interventional\_mechanism\_value\_selector\_v5 & 0.697 & 0.636 & 0.734 & 0.129 & 0.077 & 0.173 \\
+proposed\_causal\_mechanism\_selector\_v4 & 0.608 & 0.455 & 0.654 & 0.198 & 0.100 & 0.194 \\
+counterfactual\_pair\_selector & 0.556 & 0.350 & 0.613 & 0.235 & 0.111 & 0.224 \\
+conformal\_shift\_guard\_selector & 0.537 & 0.338 & 0.590 & 0.228 & 0.097 & 0.240 \\
+tail\_risk\_reweighting\_selector & 0.534 & 0.324 & 0.597 & 0.252 & 0.102 & 0.221 \\
+offline\_rl\_value\_selector & 0.534 & 0.304 & 0.603 & 0.275 & 0.117 & 0.197 \\
+domain\_adversarial\_selector & 0.531 & 0.295 & 0.578 & 0.251 & 0.122 & 0.216 \\
+invariant\_risk\_selector & 0.526 & 0.294 & 0.589 & 0.263 & 0.117 & 0.206 \\
+foundation\_embedding\_filter & 0.489 & 0.228 & 0.594 & 0.316 & 0.124 & 0.188 \\
+influence\_function\_selector & 0.476 & 0.183 & 0.551 & 0.318 & 0.134 & 0.216 \\
+uncertainty\_active\_selector & 0.452 & 0.132 & 0.534 & 0.338 & 0.140 & 0.234 \\
+failure\_mining\_selector & 0.402 & 0.005 & 0.481 & 0.383 & 0.174 & 0.215 \\
+diversity\_coreset\_selector & 0.372 & -0.022 & 0.450 & 0.403 & 0.159 & 0.196 \\
+label\_balanced\_selector & 0.293 & -0.179 & 0.397 & 0.497 & 0.179 & 0.203 \\
+random\_uniform\_selector & 0.240 & -0.242 & 0.309 & 0.482 & 0.193 & 0.182 \\
+\bottomrule
+\end{tabular}

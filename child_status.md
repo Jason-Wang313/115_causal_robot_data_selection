@@ -1,21 +1,36 @@
-# Child Status 115
+# Child Status
 
-Current stage: ICLR main gate terminal
-Last update: 2026-06-15 19:58:38 +0100
-PDF: C:/Users/wangz/Downloads/115.pdf
-PDF SHA256: D8953A338C245EC65F6103ED57468C873DF2AAB5A9F696870EA0E41142624E93
-PDF size: 394835 bytes
-Desktop copy present: no
-GitHub: https://github.com/Jason-Wang313/115_causal_robot_data_selection
-Submission-hardening version: v4.1
-Terminal decision: STRONG_REVISE
-ICLR main ready: no
+Paper: `115_causal_robot_data_selection`
 
-Evidence digest:
-- Proposed causal selector beats `invariant_risk_selection` by `0.105 +/- 0.008` combined-stress success with `7/7` paired-seed wins.
-- Proposed success is `0.674 +/- 0.008`; strongest baseline success is `0.570 +/- 0.009`.
-- Causal recall increases; spurious dependence, tail failure, damage, and selection cost decrease.
-- Best ablation trails the full method by `0.036` success.
-- Stress sweep now covers `5,880` task/regime/seed rows and `24` aggregate rows.
-- Failure-case documentation now covers `8` causal-data-selection boundaries.
-- Remaining blocker: no real robot or external high-fidelity benchmark validation.
+Last update: 2026-06-23
+
+Version: `v5_expanded`
+
+Terminal decision: `STRONG_REVISE`
+
+ICLR-main ready: `no`
+
+## Completed
+
+- Wrote a frozen plan-first expanded submission protocol.
+- Rebuilt the experiment runner into a deterministic CPU-only/RAM-light v5 evidence factory.
+- Added strong hostile baselines including the retained `proposed_causal_mechanism_selector_v4`.
+- Added hard aggregates, paired seed tests, ablations, stress sweeps, fixed-risk deployment budgets, and 24 failure cases.
+- Generated a 25-page ICLR-style manuscript with bright boxed clickable citations.
+- Validated row counts, gates, LaTeX log, page count, hash, and artifact placement.
+- Wrote the final numbered PDF to Downloads only.
+
+## Final Artifact
+
+- `C:/Users/wangz/Downloads/115.pdf`
+- SHA256 `718DE79DFE5AE2991958D6C2C43EE6CD3273C5BE34EFC4331C1E721E2AB3B4C4`
+
+## Blocking Scope Evidence
+
+- No real robot data-selection rollouts.
+- No accepted high-fidelity data-selection simulation.
+- No released selected dataset or indices.
+- No trained downstream policy checkpoint.
+- No calibrated collection or deployment logs.
+- No rollout videos.
+- Manual full-paper related-work synthesis remains incomplete.

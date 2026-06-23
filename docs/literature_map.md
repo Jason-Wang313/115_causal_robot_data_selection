@@ -1,17 +1,21 @@
 # Literature Map
 
-## Active Learning And Data Selection
+## Active Learning And Core-Sets
 
-Active learning selects uncertain or informative samples. Robot data selection also has collection cost and safety consequences. Paper 115 tests whether intervention-identifying samples matter more than uncertainty alone.
+Active learning and core-set selection motivate uncertainty and diversity baselines. Paper 115 differs by evaluating whether selected examples identify action-critical robot mechanisms and improve downstream control utility.
+
+## Influence And Data Valuation
+
+Influence functions motivate a selector that estimates which points matter to predictions. Paper 115 tests whether prediction influence is enough under robot mechanism shift.
 
 ## Invariant And Causal Learning
 
-Invariant-risk and causal-mediation methods motivate the spurious-correlation setting. The proposed selector differs by optimizing causal mechanism coverage for downstream robot control, not only representation invariance.
+Invariant-risk and causal-inference work motivate the spurious-shift setting. The novelty boundary is mechanism-valued robot data selection, not general causal discovery.
 
-## Failure Mining And Dataset Balancing
+## Robot Dataset Scale
 
-Failure mining and label balancing are natural baselines. The local benchmark shows they can over-sample redundant failures or spurious label correlations under mechanism shift.
+RoboNet, D4RL, RT-1, and Open X-Embodiment motivate why large robot datasets require selection and filtering. Paper 115 remains local and does not claim real dataset curation readiness.
 
-## Remaining Related-Work Work
+## Remaining Work
 
-This map is still a hostile-pool synthesis. A submission-ready version needs manual full-paper reading and careful comparison to robot dataset curation, causal active learning, offline RL data selection, and VLA dataset filtering.
+Manual full-paper synthesis is still required before ICLR-main submission.

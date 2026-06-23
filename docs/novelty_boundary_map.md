@@ -2,20 +2,19 @@
 
 ## Inside The Claim
 
-- Selecting robot data by intervention-identifying causal mechanisms.
-- Penalizing spurious confound dependence.
-- Covering rare action-critical mechanisms.
-- Balancing tail-failure reduction against collection cost.
-- Measuring downstream policy success after selection.
+- Budgeted robot data selection by interventional mechanism value.
+- Action-critical mechanism coverage under spurious and mechanism shift.
+- Joint success, causal recall, spurious dependence, tail failure, damage, cost, regret, calibration, and utility reporting.
+- Fixed-risk data-selection audit with non-rubber-stamp coverage.
 
 ## Outside The Claim
 
-- Universal active learning.
-- Real hardware SOTA.
-- Replacing offline RL.
+- General active learning.
 - General causal discovery.
-- External benchmark generality.
+- Real robot SOTA.
+- Deployed data engine.
+- Universal dataset curation for foundation robot policies.
 
-## Closest Baseline Boundary
+## Closest Local Threat
 
-The closest local competitor is `invariant_risk_selection`. It reduces some spurious dependence, but the proposed selector improves causal recall by `0.087` and success by `0.105 +/- 0.008`.
+`proposed_causal_mechanism_selector_v4` is the strongest non-oracle threat. v5 beats it locally, but still requires external validation.

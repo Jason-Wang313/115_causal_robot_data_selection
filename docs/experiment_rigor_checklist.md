@@ -1,24 +1,14 @@
 # Experiment Rigor Checklist
 
-## v4 Local Empirical Rigor
-
-- [x] Paper-specific causal robot data-selection benchmark.
-- [x] 5 robot skill families.
-- [x] 7 causal/spurious shift regimes.
-- [x] 5 selection budgets/splits.
-- [x] 9 selectors including strong baselines and oracle upper bound.
-- [x] 7 paired seeds and 84 rollout episodes per group.
-- [x] Pairwise seed differences and win counts.
-- [x] Stress sweep over spurious-correlation strength with task/regime/seed detail.
-- [x] Core ablations with a predeclared margin gate.
-- [x] Eight failure cases, figures, and LaTeX tables.
-
-## ICLR Main Remaining Gaps
-
-- [ ] Real robot validation.
-- [ ] External high-fidelity simulator benchmark.
-- [ ] Released selected datasets and trained policy checkpoints.
-- [ ] Manual full-paper related-work synthesis.
-- [ ] Hardware qualitative rollouts or failure videos.
-
-Decision: STRONG_REVISE, not submission-ready.
+- [x] Frozen plan written before final v5 reporting.
+- [x] Strongest old method retained as `proposed_causal_mechanism_selector_v4`.
+- [x] Multiple strong baselines included: active, core-set, influence, invariant, domain-adversarial, counterfactual, conformal, offline-RL value, foundation embedding, v4, and oracle.
+- [x] Hard aggregate separated from easy source-matched rows.
+- [x] Paired seed testing over 10 hard seeds.
+- [x] Ablations over 10 method variants.
+- [x] Stress sweep over six stress axes and ten levels.
+- [x] Fixed-risk audit with strict risk budget `0.10`.
+- [x] Failure-case ledger with 24 named boundaries.
+- [x] All predefined local gates reported honestly.
+- [x] Scope gate reported as failed.
+- [x] Validator checks row counts, gates, page count, PDF hash, citation settings, logs, and artifact placement.
